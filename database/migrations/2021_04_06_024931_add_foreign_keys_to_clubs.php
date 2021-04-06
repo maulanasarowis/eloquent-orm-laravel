@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStadiumsTable extends Migration
+class AddForeignKeysToClubs extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateStadiumsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stadiums', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->integer('capacity');
-            $table->longText('address')->nullable();
-            $table->timestamps();
+        Schema::table('clubs', function (Blueprint $table) {
+            $table->foreign('stadiums_id', 'stadiums_id_fk1')->references('id')->on('stadiums')->onUpdate('CASCADE')->onDelete('RESTRICT');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateStadiumsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stadiums');
+        Schema::table('clubs', function (Blueprint $table) {
+            $table->dropForeign('stadiums_id_fk1');
+        });
     }
 }
