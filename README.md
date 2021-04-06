@@ -1,6 +1,6 @@
 # Eloquent ORM - Laravel 8
 
-ini adalah pembelajaran menggunakan Eloquent yang menggunakan teknik ORM pada Laravel 8.
+ini adalah pembelajaran Eloquent yang menggunakan teknik ORM pada Laravel 8.
 
 ## Eloquent ORM
 
